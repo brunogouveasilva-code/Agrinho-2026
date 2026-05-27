@@ -4,35 +4,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Simulador de Energia Solar Rural</title>
+
+  <title>Simulador Solar Rural PRO</title>
 
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Ícones -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
   <div class="overlay"></div>
 
   <main class="container">
-    <h1>☀ Simulador de Energia Solar Rural</h1>
+
+    <div class="topo">
+      <h1><i class="fa-solid fa-solar-panel"></i> Simulador Solar Rural PRO</h1>
+      <p>
+        Descubra economia, geração anual, retorno do investimento
+        e impacto ambiental da energia solar.
+      </p>
+    </div>
 
     <div class="card">
-      <label>Consumo mensal (kWh)</label>
-      <input type="number" id="consumo" placeholder="Ex: 1200">
 
-      <label>Valor da conta mensal (R$)</label>
-      <input type="number" id="conta" placeholder="Ex: 950">
+      <div class="grid">
 
-      <label>Quantidade de placas solares</label>
-      <input type="number" id="placas" placeholder="Ex: 20">
+        <div class="campo">
+          <label>Consumo Mensal (kWh)</label>
+          <input type="number" id="consumo" placeholder="Ex: 1500">
+        </div>
 
-      <button onclick="calcularEconomia()">
-        Calcular Economia
+        <div class="campo">
+          <label>Valor da Conta Mensal (R$)</label>
+          <input type="number" id="conta" placeholder="Ex: 1200">
+        </div>
+
+        <div class="campo">
+          <label>Quantidade de Placas</label>
+          <input type="number" id="placas" placeholder="Ex: 24">
+        </div>
+
+        <div class="campo">
+          <label>Potência da Placa (W)</label>
+          <input type="number" id="potencia" placeholder="Ex: 550">
+        </div>
+
+        <div class="campo">
+          <label>Custo do Sistema (R$)</label>
+          <input type="number" id="custoSistema" placeholder="Ex: 45000">
+        </div>
+
+        <div class="campo">
+          <label>Tarifa de Energia (R$/kWh)</label>
+          <input type="number" id="tarifa" placeholder="Ex: 0.95">
+        </div>
+
+      </div>
+
+      <button onclick="calcular()">
+        <i class="fa-solid fa-bolt"></i>
+        Calcular Simulação
       </button>
 
-      <div class="resultado" id="resultado"></div>
+      <section id="resultado" class="resultado oculto">
+
+        <div class="cardsResultado">
+
+          <div class="infoCard">
+            <h3>☀ Geração Mensal</h3>
+            <span id="geracaoMensal"></span>
+          </div>
+
+          <div class="infoCard">
+            <h3>💰 Economia Mensal</h3>
+            <span id="economiaMensal"></span>
+          </div>
+
+          <div class="infoCard">
+            <h3>📈 Economia Anual</h3>
+            <span id="economiaAnual"></span>
+          </div>
+
+          <div class="infoCard">
+            <h3>⏳ Retorno do Investimento</h3>
+            <span id="payback"></span>
+          </div>
+
+          <div class="infoCard">
+            <h3>🌱 CO₂ Evitado</h3>
+            <span id="co2"></span>
+          </div>
+
+          <div class="infoCard">
+            <h3>⚡ Autonomia Energética</h3>
+            <span id="autonomia"></span>
+          </div>
+
+        </div>
+
+        <div class="graficoBox">
+          <canvas id="graficoEconomia"></canvas>
+        </div>
+
+      </section>
+
     </div>
+
   </main>
 
   <script src="script.js"></script>
+
 </body>
 </html>
