@@ -156,3 +156,10 @@ canvas{
   }
 
 }
+.rodape{
+  margin-top:30px;
+  text-align:center;
+  color:#cbd5e1;
+  font-size:0.9rem;
+  opacity:0.8;
+}
